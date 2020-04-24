@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- config.xml reference: https://build.phonegap.com/docs/config-xml -->
+<widget xmlns = "http://www.w3.org/ns/widgets"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:gap = "http://phonegap.com/ns/1.0"
+        id = "com.grocerywalas"
+        version = "0.0.1"
+        >
+
+  <name>Grocery Walas</name>
+
+  <description>
+    Grocery Walas | The best online grocery store in Mumbai. Grocery Walas is an online APP for all your daily needs. Online shopping now made easy with a wide range of Groceries.
+  </description>
+
+  <author href="#" email="130dhaval@gmail.com">
+    MasterTech Solution
+  </author>
+
+
+  <feature name="http://api.phonegap.com/1.0/device" />
+
+
+
+  <preference name="permissions" value="none"/>
+
+
+  <!-- Customize your app and platform with the preference element. -->
+  <!--Added 2019-09-04-->
+  <preference name="phonegap-version" value="cli-9.0.0" />
+  <!--<preference name="phonegap-version" value="cli-6.5.0" />-->
+  <!--<preference name="phonegap-version" value="cli-6.3.0" />-->
+
+  <preference name="SplashScreen" value="screen"/>
+  <preference name="splash-screen-duration" value="10000" />
+  <!-- all: current version of PhoneGap -->
+  <preference name="orientation" value="default" />
+  <!-- all: default means both landscape and portrait are enabled -->
+  <preference name="target-device" value="universal"  />
+  <!--<preference name="target-device" value="handset"  />-->
+  <!-- all: possible values handset, tablet, or universal -->
+  <preference name="fullscreen" value="true" />
+  <!-- all: hides the status bar at the top of the screen -->
+  <preference name="webviewbounce" value="true" />
+  <!-- ios: control whether the screen 'bounces' when scrolled beyond the top -->
+  <preference name="prerendered-icon" value="true" />
+  <!-- ios: if icon is prerendered, iOS will not apply it's gloss to the app's icon on the user's home screen -->
+  <preference name="stay-in-webview" value="false" />
+  <!-- ios: external links should open in the default browser, 'true' would use the webview the app lives in -->
+  <preference name="ios-statusbarstyle" value="black-opaque" />
+  <!-- ios: black-translucent will appear black because the PhoneGap webview doesn't go beneath the status bar -->
+  <preference name="detect-data-types" value="true" />
+  <!-- ios: controls whether data types (such as phone no. and dates) are automatically turned into links by the system -->
+  <preference name="exit-on-suspend" value="false" />
+  <!-- ios: if set to true, app will terminate when home button is pressed -->
+  <preference name="show-splash-screen-spinner" value="true" />
+  <!-- ios: if set to false, the spinner won't appear on the splash screen during app loading -->
+  <preference name="auto-hide-splash-screen" value="true" />
+  <!-- ios: if set to false, the splash screen must be hidden using a JavaScript API -->
+  <preference name="disable-cursor" value="false" />
+  <!-- blackberry: prevents a mouse-icon/cursor from being displayed on the app -->
+
+  <preference name="android-minSdkVersion" value="19" />
+  <!-- android: MIN SDK version supported on the target device. MAX version is blank by default. -->
+  <!--minSdk version to at least 19 for Android 9.0-->
+
+  <!--from August 1st, 2019-->
+  <preference name="android-targetSdkVersion" value="28"/>
+  <!--Warnings
+  now require new apps to target at least Android 9.0 (API level 28) from August 1st, 2019. 
+  App updates must be at least Android 8.0 (API level 26) until November 1st, 2019 
+  after which they must be upgraded to Android 9.0 (API level 28).-->
+
+  <preference name="android-installLocation" value="auto" />
+  <!-- android: app install location. 'auto' will choose. 'internalOnly' is device memory. 'preferExternal' is SDCard. -->
+
+  <plugin name="cordova-plugin-whitelist" />
+
+  <plugin name="cordova-plugin-battery-status" />
+  <plugin name="cordova-plugin-camera" />
+  <plugin name="cordova-plugin-media-capture" />
+  <plugin name="cordova-plugin-console" />
+  <plugin name="cordova-plugin-contacts" />
+  <plugin name="cordova-plugin-device" />
+  <!--Plugin deprecated-->
+  <!--<plugin name="cordova-plugin-device-motion" />-->
+  <!--<plugin name="cordova-plugin-device-orientation" />-->
+
+  <plugin name="cordova-plugin-dialogs" />
+  <!--<plugin name="cordova-plugin-file" />-->
+  <!--<plugin name="cordova-plugin-file-transfer" />-->
+  <plugin name="cordova-plugin-geolocation" />
+  <plugin name="cordova-plugin-globalization" />
+  <plugin name="cordova-plugin-inappbrowser" />
+  <plugin name="cordova-plugin-media" />
+  <plugin name="cordova-plugin-network-information" />
+  <plugin name="cordova-plugin-splashscreen" />
+  <plugin name="cordova-plugin-vibration" />
+
+
+  <!--Updated structure for android 9.0-->
+  <platform name="android">
+    <icon src="res/android/Icon_36x36.png" density="ldpi" />
+    <icon src="res/android/Icon_48x48.png" density="mdpi" />
+    <icon src="res/android/Icon_72x72.png" density="hdpi" />
+    <icon src="res/android/Icon_96x96.png" density="xhdpi" />
+
+    <splash src="splash.png" density="mdpi"/>
+    <splash src="res/screen/android/SplashScreen_240x320.png" density="port-ldpi"/>
+    <splash src="res/screen/android/SplashScreen_320x480.png" density="port-mdpi"/>
+    <splash src="res/screen/android/SplashScreen_480x800.png" density="port-hdpi"/>
+    <splash src="res/screen/android/SplashScreen_640x960.png" density="port-xhdpi"/>
+
+    <!--Added namespace [2019-09-04] xmlns:android="http://schemas.android.com/apk/res/android" for Error in [android 9.0 ERR_CLEARTEXT_NOT_PERMITTED]-->
+    <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application">
+      <application android:usesCleartextTraffic="true" />
+    </edit-config>
+  </platform>
+
+  <!-- Define app splash screen for each platform. -->
+
+  <!-- Icon and splash screen for ANDROID platform. -->
+  <!--<icon src="images/Icon_36x36.png" platform="android" density="ldpi" />
+  <icon src="images/Icon_48x48.png" platform="android" density="mdpi" />
+  <icon src="images/Icon_72x72.png" platform="android" density="hdpi" />
+  <icon src="images/Icon_96x96.png" platform="android" density="xhdpi" />-->
+
+  <!--<gap:splash src="images/SplashScreen_240x320.png" gap:platform="android" gap:density="ldpi" />
+    <gap:splash src="images/SplashScreen_320x480.png" gap:platform="android" gap:density="mdpi" />
+    <gap:splash src="images/SplashScreen_480x800.png" gap:platform="android" gap:density="hdpi" />
+    <gap:splash src="images/SplashScreen_640x960.png" gap:platform="android" gap:density="xhdpi" />-->
+
+  <!--<splash src="splash.png" />
+  <splash src="images/SplashScreen_240x320.png" platform="android" qualifier="port-ldpi" />
+  <splash src="images/SplashScreen_320x480.png" platform="android" qualifier="port-mdpi" />
+  <splash src="images/SplashScreen_480x800.png" platform="android" qualifier="port-hdpi" />
+  <splash src="images/SplashScreen_640x960.png" platform="android" qualifier="port-xhdpi" />-->
+
+  <access origin="*" />
+  <allow-intent href="http://*/*" />
+  <allow-intent href="https://*/*" />
+
+  <allow-navigation href="*" />
+</widget>
